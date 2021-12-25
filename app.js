@@ -1,4 +1,5 @@
 const fs = require('fs');
+var inquirer = require('inquirer')
 const generatePage = require('./src/page-template');
 
 const profileDataArgs = process.argv.slice(2);
@@ -16,3 +17,13 @@ fs.writeFile('./index.html', pageHTML, err => {
 
   console.log('Portfolio complete! Check out index.html to see the output!');
 });
+
+inquirer
+  .prompt([
+    {
+      type: 'input',
+      name: 'name',
+      message: 'What is your name?'
+    }
+  ])
+  .then(answers => console.log(answers));
